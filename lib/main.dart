@@ -1,4 +1,5 @@
-import 'package:desafio/screens/tela_inicial.dart';
+import 'package:desafio/screens/primeiraTela.dart';
+import 'package:desafio/test/list.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,19 +14,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // This widget is the root of your application.
   @override
-  bool opacidade = true;
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.amber,
       ),
-      home: InitialScreen(),
+      home: Primeiratela(),
     );
   }
 }
-
-
-
