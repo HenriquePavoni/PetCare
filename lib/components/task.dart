@@ -46,6 +46,7 @@ class Task extends StatelessWidget {
                       child: Image.asset(
                         image,
                         fit: BoxFit.cover,
+                        height: 130,
                       ),
                     ),
                   ),

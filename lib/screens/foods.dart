@@ -20,12 +20,7 @@ class _FoodsState extends State<Foods> {
               color: Colors.white,
             ),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) {
-                  return const Primeiratela();
-                }),
-              );
+              Navigator.pop(context);
             },
           ),
           title: const Text(
@@ -65,25 +60,27 @@ class _FoodsState extends State<Foods> {
                   "nome": "Pera",
                   "descricao":
                       "Peras são seguras para cães, mas é importante removê-las as sementes e o caroço, pois podem ser tóxicos. Ofereça em pequenas quantidades e consulte um veterinário antes de adicionar à dieta do seu animal.",
-                  "image": "assets/images/9211.jpg"
+                  "image":
+                      "assets/images/pdwatercolorfruitbatch1-1098-gloy-b.jpg"
                 },
                 {
                   "nome": "Morango",
                   "descricao":
                       "Morangos são seguros para cães e podem ser oferecidos como um lanche saudável. Eles são ricos em vitaminas, mas devem ser dados em pequenas quantidades para evitar problemas digestivos. Sempre lave bem os morangos antes de servir.",
-                  "image": "assets/images/9211.jpg"
+                  "image": "assets/images/8324761.jpg"
                 },
                 {
                   "nome": "Banana",
                   "descricao":
                       "Bananas são seguras para cães e podem ser um lanche saudável e energético. Ricas em potássio, devem ser oferecidas em pequenas quantidades devido ao alto teor de açúcar. Consulte um veterinário antes de incluí-las na dieta do seu animal.",
-                  "image": "assets/images/9211.jpg"
+                  "image":
+                      "assets/images/single-banana-isolated-white-background.jpg"
                 },
                 {
                   "nome": "Melão",
                   "descricao":
                       "Melão é seguro para cães e pode ser um lanche nutritivo e refrescante. Rico em vitaminas e com alto teor de água, deve ser oferecido sem sementes e casca. Consulte um veterinário antes de adicioná-lo à dieta do seu animal.",
-                  "image": "assets/images/9211.jpg"
+                  "image": "assets/images/8324280.jpg"
                 },
                 {
                   "nome": "Pêssego",

@@ -1,3 +1,5 @@
+import 'package:desafio/data/diaryData.dart';
+import 'package:desafio/screens/diarys.dart';
 import 'package:desafio/screens/foods.dart';
 import 'package:flutter/material.dart';
 import '../components/task.dart';
@@ -44,7 +46,9 @@ class _InitialScreenState extends State<Primeiratela> {
                 );
               },
             ),
-            Task("Comidas Permitidas", "assets/images/21251.jpg", onTap: () {
+            Task("Comidas Permitidas",
+                "assets/images/view-adorable-dog-with-bowl-food.jpg",
+                onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) {
@@ -54,22 +58,18 @@ class _InitialScreenState extends State<Primeiratela> {
             }),
             Task(
               "Diário",
-              "assets/images/21251.jpg",
+              "assets/images/boy-drawing-with-charcoal-with-dog.jpg",
               onTap: () {
-                print("Diário clicado!");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return DiaryInherited(child: Diarys());
+                  }),
+                );
               },
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            opacidade = !opacidade;
-          });
-        },
-        backgroundColor: Colors.blue[100],
-        child: const Icon(Icons.remove_red_eye),
       ),
     );
   }

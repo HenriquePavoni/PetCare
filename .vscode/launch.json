@@ -7,7 +7,10 @@
         {
             "name": "PetCare",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "program": "lib/main.dart",
+            "args": [],
+            "flutterMode": "debug"
         },
         {
             "name": "PetCare (profile mode)",

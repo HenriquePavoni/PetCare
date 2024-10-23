@@ -1,53 +1,47 @@
 import 'package:flutter/material.dart';
 
-class Vaccine extends StatefulWidget {
+class Vaccine extends StatelessWidget {
   final String name;
+  final bool vacinado;
+  final ValueChanged<bool?> onChanged;
 
-  const Vaccine({super.key, required this.name});
-
-  @override
-  State<Vaccine> createState() => _VaccineState();
-}
-
-class _VaccineState extends State<Vaccine> {
-  bool isChecked = false;
+  const Vaccine({
+    super.key,
+    required this.name,
+    required this.vacinado,
+    required this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Container(
-          color: Colors.white,
-          height: 100,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Container(
-                width: 50,
-                child: Transform.scale(
-                  scale: 3.0,
-                  child: Checkbox(
-                    value: isChecked,
-                    checkColor: Colors.orange,
-                    onChanged: (newBool) {
-                      setState(() {
-                        isChecked = newBool ?? false;
-                      });
-                    },
-                  ),
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Container(
+        color: Colors.white,
+        height: 100,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            SizedBox(
+              width: 50,
+              child: Transform.scale(
+                scale: 3.0,
+                child: Checkbox(
+                  value: vacinado,
+                  checkColor: Colors.orange,
+                  onChanged: onChanged,
                 ),
               ),
-              Container(
-                width: 300,
-                child: Text(
-                  textAlign: TextAlign.center,
-                  widget.name,
-                  style: const TextStyle(fontSize: 30),
-                ),
-              )
-            ],
-          ),
+            ),
+            SizedBox(
+              width: 300,
+              child: Text(
+                textAlign: TextAlign.center,
+                name,
+                style: const TextStyle(fontSize: 30),
+              ),
+            )
+          ],
         ),
       ),
     );
