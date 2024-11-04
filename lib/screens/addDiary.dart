@@ -1,4 +1,6 @@
+import 'package:desafio/components/diary.dart';
 import 'package:desafio/data/diaryData.dart';
+import 'package:desafio/data/petDao.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -175,13 +177,26 @@ class _AddDiaryState extends State<AddDiary> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton(
-                      onPressed: () {
+                      onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          DiaryInherited.of(widget.diaryContext).newDiary(
-                            dateController.text,
-                            titleController.text,
-                            descController.text,
-                            imageController.text,
+                          // DiaryInherited.of(widget.diaryContext).newDiary(
+                          //   dateController.text,
+                          //   titleController.text,
+                          //   descController.text,
+                          //   imageController.text,
+                          // );
+
+                          await PetDao().save(
+                            Diary(
+                                image: imageController.text,
+                                title: titleController.text,
+                                description: descController.text,
+                                date: dateController.text),
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Salvando novo capitulo'),
+                            ),
                           );
                           Navigator.pop(context);
                         }
