@@ -70,7 +70,7 @@ class Food extends StatelessWidget {
               image,
               height: 60,
               width: 60,
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           ),
         ),

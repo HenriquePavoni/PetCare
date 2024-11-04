@@ -1,6 +1,6 @@
-import 'package:desafio/components/vaccine.dart';
-import 'package:desafio/screens/primeiraTela.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:desafio/components/vaccine.dart';
 
 class Vaccines extends StatefulWidget {
   const Vaccines({Key? key}) : super(key: key);
@@ -10,6 +10,39 @@ class Vaccines extends StatefulWidget {
 }
 
 class _VaccinesState extends State<Vaccines> {
+  final List<bool> _checkedStates = List.filled(10, false);
+  final List<String> _vacinas = [
+    'Vacina V8/V10',
+    'Vacina Antirrábica',
+    'Vacina contra a Tosse dos Canis',
+    'Vacina contra a Leishmaniose',
+    'Vacina contra a Giardíase',
+    'Vacina contra a Parainfluenza',
+    'Vacina V4/V5',
+    'Vacina contra a Leucemia Felina',
+    'Vacina contra a Clamidofilose',
+    'Vacina contra a Peritonite Infecciosa Felina (PIF)',
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadCheckboxStates();
+  }
+
+  Future<void> _loadCheckboxStates() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    for (int i = 0; i < _checkedStates.length; i++) {
+      _checkedStates[i] = prefs.getBool('vaccine_$i') ?? false;
+    }
+    setState(() {});
+  }
+
+  Future<void> _saveCheckboxState(int index, bool value) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('vaccine_$index', value);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +53,7 @@ class _VaccinesState extends State<Vaccines> {
             color: Colors.white,
           ),
           onPressed: () {
-            Navigator.pop(context); // Volta para a tela anterior
+            Navigator.pop(context);
           },
         ),
         title: const Text(
@@ -36,17 +69,20 @@ class _VaccinesState extends State<Vaccines> {
       ),
       body: Container(
         color: Colors.amberAccent,
-        child: ListView(
-          children: const [
-            Vaccine(name: 'Vacina antirrábica'),
-            Vaccine(name: 'Vacina Cinomose'),
-            Vaccine(name: 'Vacina leptospirose'),
-            Vaccine(name: 'Vacina Ehrlichiose'),
-            Vaccine(name: 'Vacina parainfluenza'),
-            Vaccine(name: 'Vacina giardíase'),
-            Vaccine(name: 'Vacina Lyme'),
-            Vaccine(name: 'Vacina parvovirose'),
-          ],
+        child: ListView.builder(
+          itemCount: _checkedStates.length,
+          itemBuilder: (context, index) {
+            return Vaccine(
+              name: _vacinas[index],
+              vacinado: _checkedStates[index],
+              onChanged: (bool? newValue) {
+                setState(() {
+                  _checkedStates[index] = newValue ?? false;
+                  _saveCheckboxState(index, _checkedStates[index]);
+                });
+              },
+            );
+          },
         ),
       ),
     );
