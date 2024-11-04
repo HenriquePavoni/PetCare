@@ -1,3 +1,4 @@
+import 'package:desafio/data/petDao.dart';
 import 'package:flutter/material.dart';
 
 class Diary extends StatefulWidget {
@@ -26,43 +27,89 @@ class _DiaryState extends State<Diary> {
         padding: const EdgeInsets.all(8.0),
         child: Container(
           width: 250,
-          height: 150,
+          height: 180,
           color: Colors.white,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+          child: Column(
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  border: Border.all(width: 3),
-                  color: Colors.black26,
-                ),
-                width: 120,
-                height: 120,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(4),
-                  child: Image.network(
-                    widget.image,
-                    fit: BoxFit.cover,
-                  ),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                      onPressed: () => showDialog<String>(
+                            context: context,
+                            builder: (BuildContext context) => Dialog(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  const Text('Tem certeza que deseja apagar ?'),
+                                  const SizedBox(height: 15),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {
+                                          PetDao().delete(widget.title);
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text('Sim'),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text('Nao'),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                      icon: Icon(Icons.close))
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 15),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.date,
-                      style: const TextStyle(fontSize: 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(4),
+                      border: Border.all(width: 3),
+                      color: Colors.black26,
                     ),
-                    Text(
-                      widget.title,
-                      style: const TextStyle(fontSize: 25),
+                    width: 120,
+                    height: 120,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(4),
+                      child: Image.network(
+                        widget.image,
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                  ],
-                ),
-              )
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.date,
+                          style: const TextStyle(fontSize: 30),
+                        ),
+                        Container(
+                          width: 150,
+                          child: Text(
+                            widget.title,
+                            style: const TextStyle(fontSize: 25),
+                            textAlign: TextAlign.center,
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ],
           ),
         ),

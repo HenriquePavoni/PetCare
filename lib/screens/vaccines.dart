@@ -10,7 +10,7 @@ class Vaccines extends StatefulWidget {
 }
 
 class _VaccinesState extends State<Vaccines> {
-  final List<bool> _checkedStates = List.filled(10, false);
+  final List<bool> _checkedStates = List.filled(9, false);
   final List<String> _vacinas = [
     'Vacina V8/V10',
     'Vacina Antirrábica',
@@ -21,7 +21,6 @@ class _VaccinesState extends State<Vaccines> {
     'Vacina V4/V5',
     'Vacina contra a Leucemia Felina',
     'Vacina contra a Clamidofilose',
-    'Vacina contra a Peritonite Infecciosa Felina (PIF)',
   ];
 
   @override

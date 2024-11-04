@@ -86,25 +86,25 @@ class _FoodsState extends State<Foods> {
                   "nome": "Pêssego",
                   "descricao":
                       "Pêssegos são seguros para cães, mas devem ser oferecidos sem caroço e casca. Dê em pequenas quantidades e consulte um veterinário antes de incluí-los na dieta do seu animal.",
-                  "image": "assets/images/9211.jpg"
+                  "image": "assets/images/peach-table.jpg"
                 },
                 {
                   "nome": "Melancia",
                   "descricao":
                       "Melancia é segura para cães e pode ser um lanche refrescante. Ofereça sem sementes e casca, pois podem causar problemas digestivos. Consulte um veterinário antes de incluir melancia na dieta do seu animal.",
-                  "image": "assets/images/9211.jpg"
+                  "image": "assets/images/slice-watermelon-white-background.jpg"
                 },
                 {
                   "nome": "Abacate",
                   "descricao":
                       "Abacate não é seguro para cães, pois contém persina, que pode ser tóxica. Mesmo pequenas quantidades podem causar problemas gastrointestinais, por isso é melhor evitá-lo na dieta do seu animal.",
-                  "image": "assets/images/9211.jpg"
+                  "image": "assets/images/18965810.jpg"
                 },
                 {
                   "nome": "Cerejas",
                   "descricao":
                       "Cerejas são perigosas para cães, pois suas sementes contêm cianeto, que é tóxico. Além disso, a polpa pode causar desconforto digestivo em grandes quantidades. É melhor evitar dar cerejas ao seu animal.",
-                  "image": "assets/images/9211.jpg"
+                  "image": "assets/images/8851424.jpg"
                 },
               ];
 
