@@ -1,6 +1,5 @@
 import 'package:desafio/components/diary.dart';
-import 'package:desafio/data/diaryData.dart';
-import 'package:desafio/data/petDao.dart';
+import 'package:desafio/data/diaryDao.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -179,14 +178,7 @@ class _AddDiaryState extends State<AddDiary> {
                     child: ElevatedButton(
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          // DiaryInherited.of(widget.diaryContext).newDiary(
-                          //   dateController.text,
-                          //   titleController.text,
-                          //   descController.text,
-                          //   imageController.text,
-                          // );
-
-                          await PetDao().save(
+                          await DiaryDao().save(
                             Diary(
                                 image: imageController.text,
                                 title: titleController.text,
