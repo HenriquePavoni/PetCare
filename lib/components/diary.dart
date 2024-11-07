@@ -1,4 +1,4 @@
-import 'package:desafio/data/petDao.dart';
+import 'package:desafio/data/diaryDao.dart';
 import 'package:flutter/material.dart';
 
 class Diary extends StatefulWidget {
@@ -49,7 +49,7 @@ class _DiaryState extends State<Diary> {
                                     children: [
                                       TextButton(
                                         onPressed: () {
-                                          PetDao().delete(widget.title);
+                                          DiaryDao().delete(widget.title);
                                           Navigator.pop(context);
                                         },
                                         child: const Text('Sim'),

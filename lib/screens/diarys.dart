@@ -1,6 +1,5 @@
 import 'package:desafio/components/diary.dart';
-import 'package:desafio/data/diaryData.dart';
-import 'package:desafio/data/petDao.dart';
+import 'package:desafio/data/diaryDao.dart';
 import 'package:desafio/screens/addDiary.dart';
 import 'package:flutter/material.dart';
 
@@ -46,7 +45,7 @@ class _DiarysState extends State<Diarys> {
       body: Container(
         color: Colors.amberAccent,
         child: FutureBuilder<List<Diary>>(
-          future: PetDao().findAll(),
+          future: DiaryDao().findAll(),
           builder: (context, snapshot) {
             List<Diary>? items = snapshot.data;
             switch (snapshot.connectionState) {

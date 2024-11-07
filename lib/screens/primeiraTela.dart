@@ -1,9 +1,7 @@
-import 'package:desafio/data/diaryData.dart';
 import 'package:desafio/screens/diarys.dart';
 import 'package:desafio/screens/foods.dart';
 import 'package:flutter/material.dart';
 import '../components/task.dart';
-import 'vaccines.dart';
 
 class Primeiratela extends StatefulWidget {
   const Primeiratela({Key? key}) : super(key: key);
@@ -34,18 +32,6 @@ class _InitialScreenState extends State<Primeiratela> {
         color: Colors.amberAccent,
         child: ListView(
           children: [
-            Task(
-              "Vacinas",
-              "assets/images/21251.jpg",
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) {
-                    return const Vaccines();
-                  }),
-                );
-              },
-            ),
             Task("Comidas Permitidas",
                 "assets/images/view-adorable-dog-with-bowl-food.jpg",
                 onTap: () {
@@ -63,7 +49,7 @@ class _InitialScreenState extends State<Primeiratela> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) {
-                    return DiaryInherited(child: Diarys());
+                    return Diarys();
                   }),
                 );
               },
