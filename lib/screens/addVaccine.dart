@@ -1,22 +1,21 @@
-import 'package:desafio/components/diary.dart';
-import 'package:desafio/data/diaryDao.dart';
+import 'package:desafio/components/vaccine.dart';
+import 'package:desafio/data/vaccineDao.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class AddDiary extends StatefulWidget {
-  const AddDiary({super.key, required this.diaryContext});
+class AddVaccine extends StatefulWidget {
+  const AddVaccine({super.key, required this.vaccineContext});
 
-  final BuildContext diaryContext;
+  final BuildContext vaccineContext;
 
   @override
-  State<AddDiary> createState() => _AddDiaryState();
+  State<AddVaccine> createState() => _AddVaccineState();
 }
 
-class _AddDiaryState extends State<AddDiary> {
+class _AddVaccineState extends State<AddVaccine> {
   TextEditingController dateController = TextEditingController();
   TextEditingController titleController = TextEditingController();
-  TextEditingController descController = TextEditingController();
-  TextEditingController imageController = TextEditingController();
+
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -36,7 +35,7 @@ class _AddDiaryState extends State<AddDiary> {
             },
           ),
           title: const Text(
-            'Novo Capítulo',
+            'Nova Vacina',
             style: TextStyle(
               fontFamily: 'Roboto',
               fontSize: 40,
@@ -52,7 +51,7 @@ class _AddDiaryState extends State<AddDiary> {
             alignment: Alignment.topCenter,
             child: Container(
               width: 450,
-              height: 670,
+              height: 265,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 color: Colors.blueAccent,
@@ -94,82 +93,17 @@ class _AddDiaryState extends State<AddDiary> {
                       },
                       validator: (String? value) {
                         if (value == null || value.isEmpty) {
-                          return 'Insira um título';
+                          return 'Insira o nome da vacinda';
                         }
                         return null;
                       },
                       controller: titleController,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: 'Título',
+                        hintText: 'Nome Vacina',
                         fillColor: Color.fromARGB(255, 255, 255, 255),
                         filled: true,
-                        prefixIcon: Icon(Icons.title),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: TextFormField(
-                      onChanged: (text) {
-                        setState(() {});
-                      },
-                      validator: (String? value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Insira uma descrição';
-                        }
-                        return null;
-                      },
-                      controller: descController,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Descrição',
-                        fillColor: Color.fromARGB(255, 255, 255, 255),
-                        filled: true,
-                        prefixIcon: Icon(Icons.description),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      onChanged: (text) {
-                        setState(() {});
-                      },
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Insira um URL de Imagem';
-                        }
-                        return null;
-                      },
-                      keyboardType: TextInputType.url,
-                      controller: imageController,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Imagem',
-                        fillColor: Color.fromARGB(255, 255, 255, 255),
-                        filled: true,
-                        prefixIcon: Icon(Icons.photo),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 220,
-                    width: 350,
-                    decoration: BoxDecoration(
-                      color: Colors.white38,
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(width: 2, color: Colors.blue),
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.network(
-                        imageController.text,
-                        fit: BoxFit.cover,
-                        errorBuilder: (BuildContext context, Object exception,
-                            StackTrace? stackTrace) {
-                          return Image.asset("assets/images/nophoto.png");
-                        },
+                        prefixIcon: Icon(Icons.vaccines),
                       ),
                     ),
                   ),
@@ -178,11 +112,9 @@ class _AddDiaryState extends State<AddDiary> {
                     child: ElevatedButton(
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          await DiaryDao().save(
-                            Diary(
-                                image: imageController.text,
+                          await VaccineDao().save(
+                            Vaccine(
                                 title: titleController.text,
-                                description: descController.text,
                                 date: dateController.text),
                           );
                           ScaffoldMessenger.of(context).showSnackBar(
