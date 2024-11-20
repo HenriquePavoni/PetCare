@@ -1,5 +1,6 @@
 import 'package:desafio/screens/diarys.dart';
 import 'package:desafio/screens/foods.dart';
+import 'package:desafio/screens/vaccines.dart';
 import 'package:flutter/material.dart';
 import '../components/task.dart';
 
@@ -50,6 +51,18 @@ class _InitialScreenState extends State<Primeiratela> {
                   context,
                   MaterialPageRoute(builder: (context) {
                     return Diarys();
+                  }),
+                );
+              },
+            ),
+            Task(
+              "Vacinas",
+              "assets/images/boy-drawing-with-charcoal-with-dog.jpg",
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return Vaccines();
                   }),
                 );
               },

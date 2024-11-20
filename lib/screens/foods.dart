@@ -1,4 +1,3 @@
-import 'package:desafio/screens/primeiraTela.dart';
 import 'package:flutter/material.dart';
 import 'package:desafio/components/food.dart';
 

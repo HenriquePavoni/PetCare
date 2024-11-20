@@ -10,7 +10,7 @@ class DiaryDao {
       '$_description TEXT, '
       '$_image TEXT)';
 
-  static const String _tablename = 'vaccines';
+  static const String _tablename = 'diaries';
   static const String _date = 'date';
   static const String _title = 'title';
   static const String _description = 'description';
